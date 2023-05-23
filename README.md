@@ -4,7 +4,7 @@
 This is the first of four assignments for the Visual Analytics course
 
 # Contribution
-The assignment was initially done in collaboration with other course participants. Help was also gathered from the notebooks in class. The final version of the code was developed independently by me. I have also made several modifications to the code since the initial submission. The data used in this submission can be acessed on [Kaggle](https://www.kaggle.com/datasets/saidakbarp/17-category-flowers) but i chose to include the zip-file of the data in the data directory. 
+The assignment was initially done in collaboration with other course participants. Help was also gathered from the notebooks in class. The final version of the code was developed independently by me. I have also made several modifications to the code since the initial submission. 
 
 # Ross' instructions
 
@@ -31,7 +31,7 @@ For this exercise, you should write some code which does the following:
 
 # Data
 
-The data for this assignment was originally created by [Maria-Elena Nilsback and Andrew Zisserman](https://www.robots.ox.ac.uk/~vgg/data/flowers/17/) from the University of Oxford. The data i use is from the data folder we were provided with in class. Its a zip file called flowers.zip that i have maintained in the data folder of this GitHub repository. In total, the zip file contains over 1300 images of different flowers.
+The data for this assignment was originally created by [Maria-Elena Nilsback and Andrew Zisserman](https://www.robots.ox.ac.uk/~vgg/data/flowers/17/) from the University of Oxford. The data i use is from a [Kaggle](https://www.kaggle.com/datasets/saidakbarp/17-category-flowers) user called Saidakbarp. Its a .tgz file that in total contains over 1300 images of different flowers.
 
 # Packages 
 I used a small variety of different packages for this assignment. I will in the following bulletpoints list them and for what purpose they were needed
@@ -41,6 +41,7 @@ I used a small variety of different packages for this assignment. I will in the 
 * ```os``` is used to navigate paths.
 * ```argparse``` is used to create command line arguments that gives the user of the script a choice of which image to compare with others.
 * ```Numpy``` is used to convert into arrays
+* ```tarfile``` to unzip the data 
 
 # Methods
 This script, code.py, starts by defining a function that extracts colour histograms of a given image. It does this by using ```OpenCV```'s ```calcHist``` method. After the colour histogram is calculated, the function then normalizes the image using ```normalize``` and the argument cv2.NORM_MINMAX. I have chosen to limit the pixel values between 0 and 1.0. Now, the function is utilized in another function that iterates through every image in the data, calculates colour histograms, normalizes and eventually compares them to the chosen image. The function uses ```compareHist``` from ```OpenCV``` with the argument cv2.HISTCMP_CHISQR which finds the distance metric score between the chosen image and all the other images. It sorts the colour histograms so that the 5 closest scores are identified. Then it creates a ```Pandas```dataframe and saves the output to a csv file in the _out_ folder
