@@ -1,5 +1,5 @@
 # Create virtual environment
-python3 -m venv assignment2_env
+python3 -m venv assignment1_env
 
 # Install requirements
 python3 -m pip install --upgrade pip
