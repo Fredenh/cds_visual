@@ -53,13 +53,5 @@ After consulting the output of my image search algorithm it is clear that this m
 * Then you run ```bash setup.sh``` from the command line to install requirements and create the virtual environment
 * Run ```source ./assignment1_env/bin/activate```
 * To run the script, run ```python3 src/code.py```
-* 
-
-
-python -c "import zipfile; zipfile.ZipFile('path/to/your/file.zip', 'r').extractall('in')"
-
-To run the main task make sure to navigate to the "assignment1" folder. Then run the following from the command line:
-
-python3 src/code.py 
-
-After running the script the results are located in the "out" folder as "top_five.csv"
+* If you want to see the results of a different target image than the default then run ```python3 src/code.py image_1300.jpg```. Here i just exemplify with image 1300, but you can chose any picture between 0001 and 1360.
+* After running the script the results are located in the _out_ folder as "top_five.csv"
