@@ -6,7 +6,7 @@ from PIL import Image
 import numpy as np
 import argparse
 
-# Creating a function that finds the colour histograms for a selected image
+# Creating a function that finds the colour histogram of a selected image
 def extract_color_histogram(image_path):
     # Accessing image with help from PIL since cv2.imread was problematic for my operating system
     image = Image.open(image_path) 
