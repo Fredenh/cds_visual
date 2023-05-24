@@ -5,6 +5,14 @@ import pandas as pd
 from PIL import Image
 import numpy as np
 import argparse
+import tarfile
+
+# Tool to unzip the data from .tgz 
+tgz_path = os.path.join(".", "data", "17flowers.tgz")
+zip_destination = os.path.join(".", "data")
+
+with tarfile.open(tgz_path, 'r:gz') as tar:
+    tar.extractall(path=zip_destination)
 
 # Creating a function that finds the colour histogram of a selected image
 def extract_color_histogram(image_path):
@@ -29,8 +37,8 @@ def find_5_images(chosen_image_path, folder_path):
     other_histograms = {}
     # Iterating through files in the "flowers" folder
     for file_name in os.listdir(folder_path):
-        # Checks if it is a file. This is because there is a folder wihtin the flowers folder called .ipynb_checkpoints that i want to avoid
-        if not os.path.isfile(os.path.join(folder_path, file_name)):
+       # Checks if it is a file and has a .jpg extension. To get around the problem of the .txt files in the "jpg" folder
+        if not os.path.isfile(os.path.join(folder_path, file_name)) or not file_name.lower().endswith('.jpg'):
             continue
         # For files in the folder
         image_path = os.path.join(folder_path, file_name)
@@ -73,7 +81,7 @@ def find_5_images(chosen_image_path, folder_path):
 # The main function that runs the code
 def main(args):
     # Here i specify the location of the folder where the images are located
-    folder_path = os.path.join(".", "data", "flowers", "flowers")
+    folder_path = os.path.join(".", "data", "jpg")
     # This section checks if there is provided a target image as an argument when the script is run from the command line
     if args.target_image is None:
         # If it is not the case, the default image is "image_1342.jpg"
